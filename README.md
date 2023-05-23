@@ -18,6 +18,7 @@ Descargar repositorio y abrirlo con Spring Tool Suite
 
 * [Spring Tool Suite](https://spring.io) - STS donde se creó el proyecto
 * [Java](https://www.oracle.com/java/technologies/downloads/) - Java versión 8 utilizada
+* [Lombok](https://projectlombok.org) - Lombok
 
 ## Autores ✒️
 
