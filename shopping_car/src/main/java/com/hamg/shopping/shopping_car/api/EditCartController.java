@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hamg.shopping.shopping_car.api.dto.Carts;
+import com.hamg.shopping.shopping_car.catalogue.Constants;
 import com.hamg.shopping.shopping_car.core.service.EditCartService;
 
 @RestController
@@ -22,7 +23,7 @@ public class EditCartController {
 
 		Carts resultEdit = service.editCarts(cart);
 		
-		return (!Objects.isNull(resultEdit)) ? "The record with ID: "+resultEdit.getId()+", has been successfully updated." : "Registration was not updated successfully";
+		return (!Objects.isNull(resultEdit)) ? Constants.MSG_THE_RECORD_WITH_ID.concat(resultEdit.getId().toString()).concat(Constants.MSG_SUCCESS_EDIT) : Constants.MSG_NOT_SUCCESS_EDIT;
 	}
 
 }

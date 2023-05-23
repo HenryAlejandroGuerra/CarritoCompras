@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.hamg.shopping.shopping_car.api.dto.Carts;
 import com.hamg.shopping.shopping_car.api.dto.Products;
+import com.hamg.shopping.shopping_car.catalogue.Constants;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +22,7 @@ public class AdapterConsumer {
 	
 	public List<Products> getAllProductsAPI() {
 		
-		Products[] p = restTemplate.getForObject("https://fakestoreapi.com/products", Products[].class);
+		Products[] p = restTemplate.getForObject(Constants.URL_API_PRODUCTS, Products[].class);
 		List<Products> listProducts = Arrays.asList(p);
 		log.info(listProducts.toString());
 		
@@ -33,7 +34,7 @@ public class AdapterConsumer {
 		Products p = null;
 		
 		try {
-			p = restTemplate.getForObject("https://fakestoreapi.com/products/".concat(productId.toString()), Products.class);
+			p = restTemplate.getForObject(Constants.URL_API_PRODUCTS.concat(productId.toString()), Products.class);
 		} catch (Exception e) {
 			log.error(e.toString());
 		}
@@ -42,7 +43,7 @@ public class AdapterConsumer {
 	}
 	
 	public Products addProductAPI(Products product) {
-		Products p = restTemplate.postForObject("https://fakestoreapi.com/products/", product, Products.class);
+		Products p = restTemplate.postForObject(Constants.URL_API_PRODUCTS, product, Products.class);
 		return p;
 	}
 	
@@ -50,7 +51,7 @@ public class AdapterConsumer {
 		
 		Products resultConsumer = null;;
 		try {
-			restTemplate.put("https://fakestoreapi.com/products/".concat(product.getId().toString()), product);
+			restTemplate.put(Constants.URL_API_PRODUCTS.concat(product.getId().toString()), product);
 			resultConsumer = product;
 		} catch (Exception e) {
 			log.error(e.toString());
@@ -63,7 +64,7 @@ public class AdapterConsumer {
 		
 		Boolean resultConsumer = false;;
 		try {
-			restTemplate.delete("https://fakestoreapi.com/products/".concat(productId.toString()));
+			restTemplate.delete(Constants.URL_API_PRODUCTS.concat(productId.toString()));
 			resultConsumer = true;
 		} catch (Exception e) {
 			log.error(e.toString());
@@ -74,7 +75,7 @@ public class AdapterConsumer {
 	
 	public List<Carts> getAllCartsAPI() {
 		
-		Carts[] c = restTemplate.getForObject("https://fakestoreapi.com/carts", Carts[].class);
+		Carts[] c = restTemplate.getForObject(Constants.URL_API_CARTS, Carts[].class);
 		List<Carts> listCarts = Arrays.asList(c);
 		log.info(listCarts.toString());
 		
@@ -86,7 +87,7 @@ public class AdapterConsumer {
 		Carts c = null;
 		
 		try {
-			c = restTemplate.getForObject("https://fakestoreapi.com/carts/".concat(cartId.toString()), Carts.class);
+			c = restTemplate.getForObject(Constants.URL_API_CARTS.concat(cartId.toString()), Carts.class);
 		} catch (Exception e) {
 			log.error(e.toString());
 		}
@@ -95,7 +96,7 @@ public class AdapterConsumer {
 	}
 	
 	public Carts addCartAPI(Carts cart) {
-		Carts c = restTemplate.postForObject("https://fakestoreapi.com/carts/", cart, Carts.class);
+		Carts c = restTemplate.postForObject(Constants.URL_API_CARTS, cart, Carts.class);
 		return c;
 	}
 	
@@ -103,7 +104,7 @@ public class AdapterConsumer {
 		
 		Carts resultConsumer = null;;
 		try {
-			restTemplate.put("https://fakestoreapi.com/carts/".concat(cart.getId().toString()), cart);
+			restTemplate.put(Constants.URL_API_CARTS.concat(cart.getId().toString()), cart);
 			resultConsumer = cart;
 		} catch (Exception e) {
 			log.error(e.toString());
@@ -116,7 +117,7 @@ public class AdapterConsumer {
 		
 		Boolean resultConsumer = false;;
 		try {
-			restTemplate.delete("https://fakestoreapi.com/carts/".concat(cartId.toString()));
+			restTemplate.delete(Constants.URL_API_CARTS.concat(cartId.toString()));
 			resultConsumer = true;
 		} catch (Exception e) {
 			log.error(e.toString());

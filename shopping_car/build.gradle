@@ -21,11 +21,17 @@ dependencies {
 	
 	compileOnly 'org.projectlombok:lombok'
     implementation  'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'com.google.code.gson:gson:2.8.9'
     annotationProcessor 'org.projectlombok:lombok'
     
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+	
+	//Test
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation('org.junit.vintage:junit-vintage-engine');
+    testImplementation('org.junit.jupiter:junit-jupiter-api');
 }
 
 tasks.named('test') {

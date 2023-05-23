@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hamg.shopping.shopping_car.catalogue.Constants;
 import com.hamg.shopping.shopping_car.core.service.DeleteProductService;
 import com.hamg.shopping.shopping_car.errors.ResourceNotFoundException;
 
@@ -25,7 +26,7 @@ public class DeleteProductController {
 			throw new ResourceNotFoundException();
 		}
 		
-		return (!Objects.isNull(resultDelete)) ? "The record with ID: "+productId+", has been deleted successfully." : "The record has not been deleted correctly";
+		return (!Objects.isNull(resultDelete)) ? Constants.MSG_THE_RECORD_WITH_ID.concat(productId.toString()).concat(Constants.MSG_SUCCESS_DELETE) : Constants.MSG_NOT_SUCCESS_DELETE;
 	}
 
 }
